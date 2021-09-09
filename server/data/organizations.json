@@ -1,0 +1,27 @@
+[
+    {
+        "OrganizationName": "Fruit",
+        "OrganizationId": "fruitGoods",
+        "Description": "Booths that sell fruit products, like apples and pears"
+    },
+    {
+        "OrganizationName": "Vegetables",
+        "OrganizationId": "veggieGoods",
+        "Description": "Booths that sell vegetable products, like carrots and eggplant"
+    },
+    {
+        "OrganizationName": "Animal Products",
+        "OrganizationId": "animalGoods",
+        "Description": "Booths that sell animal products, like eggs and meat"
+    },
+    {
+        "OrganizationName": "Nuts & Grains",
+        "OrganizationId": "grainGoods",
+        "Description": "Booths that sell nuts and grains, like walnuts and rice"
+    },
+    {
+        "OrganizationName": "Craft Goods",
+        "OrganizationId": "craftGoods",
+        "Description": "Booths that sell crafted goods, like handmade pottery and aprons"
+    }
+]
