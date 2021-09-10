@@ -1,0 +1,18 @@
+ul {
+  list-style-type: none;
+  background-color: #cbc9ad;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: auto;
+}
+
+@media (max-width: 700px) {
+  ul {
+    justify-content: center;
+  }
+}
+
+li {
+  padding: 1em;
+}

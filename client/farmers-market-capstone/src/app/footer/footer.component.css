@@ -1,0 +1,19 @@
+footer {
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+}
+
+@media (max-width: 400px) {
+  footer {
+    position: relative;
+  }
+}
+
+p {
+  padding-left: 1em;
+}
+
+small {
+  padding-right: 1em;
+}
