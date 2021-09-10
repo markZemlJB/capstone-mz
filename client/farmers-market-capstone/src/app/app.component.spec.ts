@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'capstoneFarmersMarket'`, () => {
+  it(`should have as title 'farmers-market-capstone'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('capstoneFarmersMarket');
+    expect(app.title).toEqual('farmers-market-capstone');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('capstoneFarmersMarket app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('farmers-market-capstone app is running!');
   });
 });
