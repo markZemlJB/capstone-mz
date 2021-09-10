@@ -10,9 +10,9 @@
         "Members": [
             {
                 "MemberId": 2,
-                "MemberEmail": "nat214@gmail.com",
-                "MemberName": "Natalie Rachelle",
-                "MemberPhone": "555-000-0000"
+                "MemberEmail": "thecornspeaks@yahoo.com",
+                "MemberName": "Kel Owens",
+                "MemberPhone": "555-453-2112"
             },
             {
                 "MemberId": 4,
@@ -39,9 +39,9 @@
         "Members": [
             {
                 "MemberId": 1,
-                "MemberEmail": "brit805@aol.com",
-                "MemberName": "Brittany Ray",
-                "MemberPhone": "555-000-0004"
+                "MemberEmail": "billyjoel@aol.com",
+                "MemberName": "Billy Joel Ray",
+                "MemberPhone": "555-455-4532"
             },
             {
                 "MemberId": 5,
@@ -62,9 +62,9 @@
         "Members": [
             {
                 "MemberId": 3,
-                "MemberEmail": "zwest90@gmail.com",
-                "MemberName": "Zachary Westly",
-                "MemberPhone": "555-000-0012"
+                "MemberEmail": "porky@gmail.com",
+                "MemberName": "Porkus Westly",
+                "MemberPhone": "555-345-4562"
             }
         ]
     }

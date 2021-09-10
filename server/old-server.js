@@ -75,20 +75,19 @@ function getNextId(counterType) {
 
 // ------ Validation helpers ------------------
 
-function isValidGroup(group) {
-    if (group.GroupName == undefined || group.GroupName.trim() == '') return 1
+function isValidGroup(team) {
+    if (team.GroupName == undefined || team.GroupName.trim() == '') return 1
     if (
-        group.OrganizationName == undefined ||
-        group.OrganizationName.trim() == ''
+        team.OrganizationName == undefined ||
+        team.OrganizationName.trim() == ''
     )
         return 2
-    if (group.SponsorName == undefined || group.SponsorName.trim() == '')
-        return 3
-    if (group.SponsorPhone == undefined || group.SponsorPhone.trim() == '')
+    if (team.SponsorName == undefined || team.SponsorName.trim() == '') return 3
+    if (team.SponsorPhone == undefined || team.SponsorPhone.trim() == '')
         return 4
-    if (group.SponsorEmail == undefined || group.SponsorEmail.trim() == '')
+    if (team.SponsorEmail == undefined || team.SponsorEmail.trim() == '')
         return 5
-    if (group.MaxGroupSize == undefined || isNaN(group.MaxGroupSize)) return 6
+    if (team.MaxGroupSize == undefined || isNaN(team.MaxGroupSize)) return 6
 
     return -1
 }
@@ -158,7 +157,6 @@ app.get('/api/groups/:id', function (req, res) {
     let match = data.find((element) => element.GroupId == id)
     if (match == null) {
         res.status(404).send('Group Not Found')
-        console.log('Group not found')
         return
     }
 
@@ -183,7 +181,6 @@ app.get('/api/groups/byorganization/:id', function (req, res) {
     )
     if (organization == null) {
         res.status(404).send('Organization Not Found')
-        console.log('Organization Not Found')
         return
     }
 
@@ -215,7 +212,6 @@ app.get('/api/groups/:groupid/members/:memberid', function (req, res) {
     let matchingGroup = data.find((element) => element.GroupId == groupId)
     if (matchingGroup == null) {
         res.status(404).send('Group Not Found')
-        console.log('Group Not Found')
         return
     }
 
@@ -223,7 +219,6 @@ app.get('/api/groups/:groupid/members/:memberid', function (req, res) {
     let match = matchingGroup.Members.find((m) => m.MemberId == memberId)
     if (match == null) {
         res.status(404).send('Member Not Found')
-        console.log('Member Not Found')
         return
     }
 
@@ -245,7 +240,8 @@ app.post('/api/groups', urlencodedParser, function (req, res) {
         SponsorName: req.body.SponsorName,
         SponsorPhone: req.body.SponsorPhone,
         SponsorEmail: req.body.SponsorEmail,
-        MaxGroupSize: Number(req.body.MaxGroupSize),
+        // MaxGroupSize: Number(req.body.MaxGroupSize),
+        MaxGroupSize: 4,
         Members: [],
     }
 
@@ -298,7 +294,7 @@ app.post('/api/groups', urlencodedParser, function (req, res) {
     console.log('Group added: ')
     console.log(group)
 
-    //res.status(201).send(JSON.stringify(group));
+    //res.status(201).send();
     res.end(JSON.stringify(group)) // return the new group w it's GroupId
 })
 
@@ -309,7 +305,7 @@ app.put('/api/groups', urlencodedParser, function (req, res) {
 
     // assemble group information so we can validate it
     let group = {
-        GroupId: req.body.GroupId, // req.params.id if you use id in URL instead of req.body.GroupId
+        GroupId: req.body.GroupId,
         GroupName: req.body.GroupName,
         OrganizationName: req.body.OrganizationName,
         SponsorName: req.body.SponsorName,
@@ -328,6 +324,13 @@ app.put('/api/groups', urlencodedParser, function (req, res) {
 
     let data = fs.readFileSync(__dirname + '/data/groups.json', 'utf8')
     data = JSON.parse(data)
+
+    // find the group
+    let match = data.find((element) => element.GroupId == req.body.GroupId)
+    if (match == null) {
+        res.status(404).send('Group Not Found')
+        return
+    }
 
     //XXX: Org data
     let orgData = fs.readFileSync(
@@ -359,32 +362,21 @@ app.put('/api/groups', urlencodedParser, function (req, res) {
         return
     }
 
-    // find the group
-    let match = data.find((element) => element.GroupId == group.GroupId)
-    if (match == null) {
-        res.status(404).send('Group Not Found')
-        console.log('Group Not Found')
-        return
-    }
-
     // update the group
-    match.GroupName = group.GroupName
-    match.OrganizationName = group.OrganizationName
-    match.SponsorName = group.SponsorName
-    match.SponsorPhone = group.SponsorPhone
-    match.SponsorEmail = group.SponsorEmail
+    match.GroupName = req.body.GroupName
+    match.OrganizationName = req.body.OrganizationName
+    match.SponsorName = req.body.SponsorName
+    match.SponsorPhone = req.body.SponsorPhone
+    match.SponsorEmail = req.body.SponsorEmail
 
     // make sure new values for MaxGroupSize doesn't invalidate grooup
-    if (Number(group.MaxGroupSize) < match.Members.length) {
+    if (Number(req.body.MaxGroupSize) < match.Members.length) {
         res.status(409).send(
             'New group size too small based on current number of members'
         )
-        console.log(
-            'New group size too small based on current number of members'
-        )
         return
     }
-    match.MaxGroupSize = Number(group.MaxGroupSize)
+    match.MaxGroupSize = Number(req.body.MaxGroupSize)
 
     fs.writeFileSync(__dirname + '/data/groups.json', JSON.stringify(data))
 
@@ -445,13 +437,12 @@ app.post('/api/groups/:id/members', urlencodedParser, function (req, res) {
     let match = data.find((element) => element.GroupId == id)
     if (match == null) {
         res.status(404).send('Group Not Found')
-        console.log('Group Not Found')
         return
     }
 
-    if (match.Members.length == match.MaxGroupSize) {
-        res.status(409).send('Member not added - group at capacity')
-        console.log('Member not added - group at capacity')
+    //XXX: CUSTOM Check if group is at max capacity
+    if (Number(match.MaxGroupSize) === match.Members.length) {
+        res.status(409).send('Group is already full. Cannot add new members')
         return
     }
 
@@ -461,10 +452,7 @@ app.post('/api/groups/:id/members', urlencodedParser, function (req, res) {
     fs.writeFileSync(__dirname + '/data/groups.json', JSON.stringify(data))
 
     console.log('New member added!')
-    console.log(member)
-
-    //res.status(201).send(JSON.stringify(member));
-    res.end(JSON.stringify(member)) // return the new member with member id
+    res.status(200).send()
 })
 
 // EDIT A MEMBER IN A GROUP
@@ -541,7 +529,6 @@ app.delete(
         let matchingGroup = data.find((element) => element.GroupId == groupId)
         if (matchingGroup == null) {
             res.status(404).send('Group Not Found')
-            console.log('Group Not Found')
             return
         }
 
@@ -606,9 +593,7 @@ app.post('/api/users', urlencodedParser, function (req, res) {
     if (matchingUser != null) {
         // username already exists
         console.log('ERROR: username already exists!')
-        res.status(403).send() // forbidden - 403 has no message; programmers should
-        // have used GET /api/username_available/:username to see if
-        // if user registration would have worked
+        res.status(403).send() // forbidden
         return
     }
 
