@@ -10,10 +10,20 @@ import { MainComponent } from './main/main.component';
 import { ViewBoothsComponent } from './view-booths/view-booths.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, NavbarComponent, MainComponent, ViewBoothsComponent, NotFoundComponent, HomeComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavbarComponent,
+    MainComponent,
+    ViewBoothsComponent,
+    NotFoundComponent,
+    HomeComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
