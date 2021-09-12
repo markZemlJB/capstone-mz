@@ -13,7 +13,7 @@
         <!-- <select name="products" id="products" (change)="getBoothsByCategory($event.target.value)"> -->
         <select name="products" id="products" (change)="categorySelection($event.target.value)">
           <option value="none" selected disabled hidden>Select a product category</option>
-          <option *ngFor="let category of categories" value="{{ category }}">
+          <option *ngFor="let category of categories" value="{{ category.OrganizationId }}">
             {{ category.OrganizationName }}
           </option>
         </select>
@@ -24,10 +24,10 @@
       </div>
       <div>
         <label for="booths">Booths: </label>
-        <select name="booths" id="booths">
+        <select name="booths" id="booths" (change)="boothSelection($event.target.value)">
           <!-- TODO: Fix the default dropdown option to display dashes when no option exists -->
           <option selected>--</option>
-          <option *ngFor="let booth of booths" value="{{ booth }}">
+          <option *ngFor="let booth of booths" value="{{ booth.GroupId }}">
             {{ booth.GroupName }}
           </option>
         </select>
@@ -37,8 +37,8 @@
       </div>
       <div>
         <label for="members">Members: </label>
-        <select name="members" id="members">
-          <option value="none" selected disabled hidden>--</option>
+        <select name="members" id="members" (change)="memberSelection($event.target.value)">
+          <option selected>--</option>
           <option *ngFor="let member of members" value="{{ member.MemberId }}">
             {{ member.MemberName }}
           </option>
@@ -49,4 +49,5 @@
       </div>
     </form>
   </section>
+  <fm-crud-forms [categoryId]="selectedCatId" [boothId]="selectedBoothId" [memberId]="selectedMemberId">test</fm-crud-forms>
 </main>

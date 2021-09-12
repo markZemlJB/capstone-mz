@@ -1,1 +1,49 @@
-[{"GroupId":1,"GroupName":"Corn","OrganizationName":"Vegetables","SponsorName":"Natalie Rachelle","SponsorPhone":"555-000-0000","SponsorEmail":"nat214@gmail.com","MaxGroupSize":4,"Members":[{"MemberId":2,"MemberEmail":"thecornspeaks@yahoo.com","MemberName":"Kel Owens","MemberPhone":"555-453-2112"},{"MemberId":4,"MemberEmail":"aslan_the_great@gmail.com","MemberName":"Elisha Aslan","MemberPhone":"555-000-0003"},{"MemberId":6,"MemberEmail":"susa2007@gmail.com","MemberName":"Siddalee Grace","MemberPhone":"555-000-0020"}]},{"GroupId":2,"GroupName":"Apples","OrganizationName":"Fruits","SponsorName":"Brittany Ray","SponsorPhone":"555-000-0004","SponsorEmail":"brit805@aol.com","MaxGroupSize":4,"Members":[{"MemberId":1,"MemberEmail":"billyjoel@aol.com","MemberName":"Billy Joel Ray","MemberPhone":"555-455-4532"},{"MemberId":5,"MemberEmail":"thebro@gmail.com","MemberName":"Zephaniah Hughes","MemberPhone":"555-000-0006"}]},{"GroupId":3,"GroupName":"Pork","OrganizationName":"Animal Products","SponsorName":"Zachary Westly","SponsorPhone":"555-000-0012","SponsorEmail":"zwest90@gmail.com","MaxGroupSize":4,"Members":[{"MemberId":3,"MemberEmail":"porky@gmail.com","MemberName":"Porkus Westly","MemberPhone":"555-345-4562"}]},{"GroupId":4,"GroupName":"Carrots","OrganizationName":"Vegetables","SponsorName":"Farmer Brown","SponsorPhone":"123-4567","SponsorEmail":"fbcorn@farmer.com","MaxGroupSize":4,"Members":[]}]
+[
+  {
+    "GroupId": 1,
+    "GroupName": "Corn",
+    "OrganizationName": "Vegetables",
+    "SponsorName": "Natalie Rachelle",
+    "SponsorPhone": "555-000-0000",
+    "SponsorEmail": "nat214@gmail.com",
+    "MaxGroupSize": 4,
+    "Members": [
+      { "MemberId": 2, "MemberEmail": "thecornspeaks@yahoo.com", "MemberName": "Kel Owens", "MemberPhone": "555-453-2112" },
+      { "MemberId": 4, "MemberEmail": "aslan_the_great@gmail.com", "MemberName": "Elisha Aslan", "MemberPhone": "555-000-0003" },
+      { "MemberId": 6, "MemberEmail": "susa2007@gmail.com", "MemberName": "Siddalee Grace", "MemberPhone": "555-000-0020" }
+    ]
+  },
+  {
+    "GroupId": 2,
+    "GroupName": "Apples",
+    "OrganizationName": "Fruits",
+    "SponsorName": "Brittany Ray",
+    "SponsorPhone": "555-000-0004",
+    "SponsorEmail": "brit805@aol.com",
+    "MaxGroupSize": 4,
+    "Members": [
+      { "MemberId": 1, "MemberEmail": "billyjoel@aol.com", "MemberName": "Billy Joel Ray", "MemberPhone": "555-455-4532" },
+      { "MemberId": 5, "MemberEmail": "thebro@gmail.com", "MemberName": "Zephaniah Hughes", "MemberPhone": "555-000-0006" }
+    ]
+  },
+  {
+    "GroupId": 3,
+    "GroupName": "Pork",
+    "OrganizationName": "Animal Products",
+    "SponsorName": "Zachary Westly",
+    "SponsorPhone": "555-000-0012",
+    "SponsorEmail": "zwest90@gmail.com",
+    "MaxGroupSize": 4,
+    "Members": [{ "MemberId": 3, "MemberEmail": "porky@gmail.com", "MemberName": "Porkus Westly", "MemberPhone": "555-345-4562" }]
+  },
+  {
+    "GroupId": 4,
+    "GroupName": "Carrots",
+    "OrganizationName": "Vegetables",
+    "SponsorName": "Farmer Brown",
+    "SponsorPhone": "123-4567",
+    "SponsorEmail": "fbcorn@farmer.com",
+    "MaxGroupSize": 4,
+    "Members": []
+  }
+]

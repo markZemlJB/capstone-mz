@@ -4,7 +4,7 @@
 
 <section>
   <ul>
-    <li *ngFor="let category of categories" class="categories">
+    <li *ngFor="let category of categories">
       {{ category.OrganizationName }}
       <fm-booth-list [categoryId]="category.OrganizationId"></fm-booth-list>
     </li>

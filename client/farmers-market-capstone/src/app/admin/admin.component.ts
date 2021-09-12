@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService } from '../services/categories.service';
 import { BoothsService } from '../services/booths.service';
 import { Category } from '../models/categories';
+import { Booth } from '../models/booths';
 
 @Component({
   selector: 'fm-admin',
@@ -14,7 +15,10 @@ export class AdminComponent implements OnInit {
   categories;
   booths;
   errorMessage: string;
-  members: string[];
+  members;
+  selectedCatId;
+  selectedBoothId;
+  selectedMemberId;
 
   getCategories(): void {
     this.categoriesService.getCategory().subscribe(
@@ -26,8 +30,6 @@ export class AdminComponent implements OnInit {
       }
     );
   }
-
-  //TODO: Get orgId -> for each org id, grab list of groups under that ord and display as list
 
   getBoothsByCategory(categoryId: string): void {
     if (categoryId === null) {
@@ -43,18 +45,45 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  getMembers(members) {
-    console.log(members);
+  getMembers(boothId: number) {
+    this.boothsService.getBoothMembersByBoothId(boothId).subscribe(
+      (members) => {
+        this.members = members;
+      },
+      (error) => {
+        this.errorMessage = error;
+      }
+    );
   }
 
   categorySelection(category) {
-    console.log(category);
+    this.selectedCatId = category;
+
+    //Clears data in case the user changes their mind and chooses another dropdown option
+    this.selectedBoothId = null;
+    this.selectedMemberId = null;
+    this.booths = null;
+    this.members = null;
+
+    this.getBoothsByCategory(this.selectedCatId);
+  }
+
+  boothSelection(boothId) {
+    this.selectedBoothId = boothId;
+
+    this.selectedMemberId = null;
+    this.members = null;
+
+    this.getMembers(boothId);
+  }
+
+  memberSelection(memberId) {
+    this.selectedMemberId = memberId;
   }
 
   constructor(private categoriesService: CategoriesService, private boothsService: BoothsService) {}
 
   ngOnInit(): void {
     this.getCategories();
-    this.getBoothsByCategory(null);
   }
 }

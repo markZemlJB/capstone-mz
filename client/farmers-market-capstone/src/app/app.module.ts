@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { ViewAllBoothsComponent } from './view-all-booths/view-all-booths.component';
 import { BoothListComponent } from './booth-list/booth-list.component';
+import { CrudFormsModule } from './crud-forms/crud-forms/crud-forms.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { BoothListComponent } from './booth-list/booth-list.component';
     ViewAllBoothsComponent,
     BoothListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, CrudFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
