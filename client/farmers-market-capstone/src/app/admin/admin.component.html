@@ -1,0 +1,52 @@
+<main>
+  <section>
+    <!-- TODO: Implement Authorization for the Admin Page -->
+    <h1>Admin Page</h1>
+    <p>
+      Welcome to the Admin page. Here, you can create, update, and delete Product Categories, Booths, and Members. Use your powers wisely...
+    </p>
+  </section>
+  <section>
+    <form>
+      <div>
+        <label for="products"> Product Categories: </label>
+        <!-- <select name="products" id="products" (change)="getBoothsByCategory($event.target.value)"> -->
+        <select name="products" id="products" (change)="categorySelection($event.target.value)">
+          <option value="none" selected disabled hidden>Select a product category</option>
+          <option *ngFor="let category of categories" value="{{ category }}">
+            {{ category.OrganizationName }}
+          </option>
+        </select>
+        <!-- TODO: Implement these options when the backend has services to do these operations -->
+        <button>Add</button>
+        <button>Edit</button>
+        <button>Delete</button>
+      </div>
+      <div>
+        <label for="booths">Booths: </label>
+        <select name="booths" id="booths">
+          <!-- TODO: Fix the default dropdown option to display dashes when no option exists -->
+          <option selected>--</option>
+          <option *ngFor="let booth of booths" value="{{ booth }}">
+            {{ booth.GroupName }}
+          </option>
+        </select>
+        <button>Add</button>
+        <button>Edit</button>
+        <button>Delete</button>
+      </div>
+      <div>
+        <label for="members">Members: </label>
+        <select name="members" id="members">
+          <option value="none" selected disabled hidden>--</option>
+          <option *ngFor="let member of members" value="{{ member.MemberId }}">
+            {{ member.MemberName }}
+          </option>
+        </select>
+        <button>Add</button>
+        <button>Edit</button>
+        <button>Delete</button>
+      </div>
+    </form>
+  </section>
+</main>

@@ -12,9 +12,11 @@
     <ul>
       <!-- TODO: Set up routes for these buttons -->
       <li *ngFor="let category of categories">
-        <button>{{ category.OrganizationName }}</button>
+        <button [routerLink]="['category-view', category]" routerLinkActive="active">{{ category.OrganizationName }}</button>
       </li>
-      <li><button>View All Groups</button></li>
+      <li>
+        <button routerLink="/view-all-booths" routerLinkActive="active">View All Groups</button>
+      </li>
     </ul>
   </section>
 </main>

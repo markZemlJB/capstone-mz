@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Category } from '../models/categories';
 import { CategoriesService } from '../services/categories.service';
+import { BoothsService } from '../services/booths.service';
+import { Category } from '../models/categories';
+import { Booth } from '../models/booths';
 
 @Component({
-  selector: 'fm-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'fm-view-all-booths',
+  templateUrl: './view-all-booths.component.html',
+  styleUrls: ['./view-all-booths.component.css'],
 })
-export class HomeComponent implements OnInit {
-  constructor(private categoriesService: CategoriesService) {}
-
+export class ViewAllBoothsComponent implements OnInit {
   categories: Category[];
   errorMessage: string;
 
@@ -24,6 +23,8 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+
+  constructor(private categoriesService: CategoriesService) {}
 
   ngOnInit(): void {
     this.getCategories();

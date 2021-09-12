@@ -1,0 +1,12 @@
+<section>
+  <p>Here are all the groups. Go wild</p>
+</section>
+
+<section>
+  <ul>
+    <li *ngFor="let category of categories" class="categories">
+      {{ category.OrganizationName }}
+      <fm-booth-list [categoryId]="category.OrganizationId"></fm-booth-list>
+    </li>
+  </ul>
+</section>

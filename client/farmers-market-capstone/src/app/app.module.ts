@@ -7,10 +7,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
-import { ViewBoothsComponent } from './view-booths/view-booths.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AdminComponent } from './admin/admin.component';
+import { ViewAllBoothsComponent } from './view-all-booths/view-all-booths.component';
+import { BoothListComponent } from './booth-list/booth-list.component';
 
 @NgModule({
   declarations: [
@@ -19,9 +21,11 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     NavbarComponent,
     MainComponent,
-    ViewBoothsComponent,
     NotFoundComponent,
     HomeComponent,
+    AdminComponent,
+    ViewAllBoothsComponent,
+    BoothListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

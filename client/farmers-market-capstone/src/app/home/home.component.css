@@ -6,17 +6,6 @@ li {
   padding: 0.25em;
 }
 
-section {
+ul {
   text-align: center;
-  border-radius: 1em;
-  background-color: #cecdc2;
-  justify-content: space-around;
-  margin: 1em 1em;
-}
-
-main {
-  display: flex;
-
-  align-items: center;
-  flex-direction: column;
 }

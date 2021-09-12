@@ -3,7 +3,8 @@ import { Routes, RouterModule, Route } from '@angular/router';
 
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
-import { ViewBoothsComponent } from './view-booths/view-booths.component';
+import { AdminComponent } from './admin/admin.component';
+import { ViewAllBoothsComponent } from './view-all-booths/view-all-booths.component';
 
 const fallBackRoute: Route = {
   path: '**',
@@ -12,8 +13,8 @@ const fallBackRoute: Route = {
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'view-all-booths', component: ViewBoothsComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'view-all-booths', component: ViewAllBoothsComponent },
   fallBackRoute,
 ];
 

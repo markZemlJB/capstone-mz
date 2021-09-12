@@ -1,0 +1,13 @@
+ul {
+  list-style: none;
+  font-size: large;
+  overflow: auto;
+}
+
+li {
+  font-weight: bold;
+}
+
+li > * {
+  font-weight: normal;
+}
