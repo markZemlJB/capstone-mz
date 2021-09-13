@@ -10,10 +10,9 @@ import { Booth } from '../models/booths';
 export class BoothSearchComponent implements OnInit {
   searchTerm: string;
   matchingBooths;
-  submitCalled: boolean = false;
+  noResults: boolean = false;
 
   onSubmit() {
-    this.submitCalled = true;
     this.getAllBooths();
     return this.searchTerm;
   }
@@ -22,7 +21,12 @@ export class BoothSearchComponent implements OnInit {
     this.boothsService.getBooths().subscribe(
       (booths) => {
         this.matchingBooths = booths.filter((group) => group.GroupName == this.searchTerm);
-        console.log(this.matchingBooths);
+        // console.log(this.matchingBooths);
+        if (this.matchingBooths?.length > 0) {
+          this.noResults = false;
+        } else {
+          this.noResults = true;
+        }
       },
       (error) => console.log(error)
     );
