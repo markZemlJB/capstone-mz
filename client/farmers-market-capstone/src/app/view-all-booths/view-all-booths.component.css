@@ -17,3 +17,7 @@ li > * {
   font-weight: normal;
   font-style: italic;
 }
+
+p {
+  padding-bottom: 2em;
+}

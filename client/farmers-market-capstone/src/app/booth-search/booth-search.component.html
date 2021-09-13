@@ -3,7 +3,7 @@
   <form (submit)="onSubmit()" name="search">
     <input type="text" placeholder="Enter a booth name here" [(ngModel)]="searchTerm" name="search" />
   </form>
-  <section>
+  <div>
     <h3>Results</h3>
     <ul *ngIf="matchingBooths?.length > 0">
       <!-- TODO: Format the results in a table or nicer way -->
@@ -14,12 +14,12 @@
           <li>Booth Head Name: {{ booth.SponsorName }}</li>
           <li>Booth Head Phone: {{ booth.SponsorPhone }}</li>
           <li>Booth Head Email: {{ booth.SponsorEmail }}</li>
-          <ul>
+          <ul class="member-names">
             <li *ngFor="let members of booth.Members">Member Name: {{ members.MemberName }}</li>
           </ul>
         </ul>
       </li>
     </ul>
     <div *ngIf="noResults">No results found...</div>
-  </section>
+  </div>
 </section>
