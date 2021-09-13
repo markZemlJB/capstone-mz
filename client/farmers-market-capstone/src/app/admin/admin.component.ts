@@ -20,6 +20,8 @@ export class AdminComponent implements OnInit {
   displayAddBooth: boolean = false;
   boothPair;
 
+  // TODO: Break out functionality into smaller components
+
   editBooth() {
     //Show the booth form and pass in the values into it
     if (this.selectedBoothId != null) {
@@ -40,10 +42,9 @@ export class AdminComponent implements OnInit {
     }
     if (window.confirm('Are you sure you want to delete this?')) {
       console.log(`DELETED ${this.selectedBoothId}`);
-
-      return;
+      this.boothsService.deleteBoothById(this.selectedBoothId).subscribe((success) => console.log(success)), (error) => console.log(error);
+      window.location.reload();
     }
-    console.log('CLICKED');
   }
 
   getCategories(): void {
