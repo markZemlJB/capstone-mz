@@ -20,6 +20,7 @@ import { BoothDisplayComponent } from './booth-actions/booth-display/booth-displ
 import { BoothSearchComponent } from './booth-search/booth-search.component';
 import { MemberDisplayComponent } from './member-actions/member-display/member-display.component';
 import { MemberAddComponent } from './member-actions/member-add/member-add.component';
+import { MemberEditComponent } from './member-actions/member-edit/member-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MemberAddComponent } from './member-actions/member-add/member-add.compo
     MemberDisplayComponent,
     BoothSearchComponent,
     MemberAddComponent,
+    MemberEditComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],

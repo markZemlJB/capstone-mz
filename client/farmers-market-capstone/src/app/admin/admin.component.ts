@@ -16,25 +16,8 @@ export class AdminComponent implements OnInit {
   selectedCatId: string;
   selectedBoothId: number;
   selectedMemberId: number;
-  displayEditBooth: boolean = false;
-  displayAddBooth: boolean = false;
-  boothPair;
-
+  displayEditMember: boolean = false;
   // TODO: Break out functionality into smaller components
-
-  editBooth() {
-    //Show the booth form and pass in the values into it
-    if (this.selectedBoothId != null) {
-      this.displayEditBooth = true;
-    }
-  }
-
-  // addBooth() {
-  //   //show the booth form
-  //   if (this.displayAddBooth != null) {
-  //     this.displayAddBooth = true;
-  //   }
-  // }
 
   deleteBooth(): void {
     if (this.selectedBoothId == null) {
@@ -83,7 +66,6 @@ export class AdminComponent implements OnInit {
   }
 
   getMembers(boothId): void {
-    this.boothPair = boothId;
     this.boothsService.getBoothMembersByBoothId(boothId[0]).subscribe(
       (members) => {
         this.members = members;
@@ -102,7 +84,7 @@ export class AdminComponent implements OnInit {
     this.selectedMemberId = null;
     this.booths = null;
     this.members = null;
-    this.displayEditBooth = false;
+    this.displayEditMember = false;
 
     this.getBoothsByCategory(this.selectedCatId);
   }
@@ -115,13 +97,19 @@ export class AdminComponent implements OnInit {
 
     this.selectedMemberId = null;
     this.members = null;
+    this.displayEditMember = false;
 
     this.getMembers(boothId);
   }
 
   memberSelection(memberId): void {
     this.selectedMemberId = memberId;
-    this.displayEditBooth = false;
+  }
+
+  displayEditMemberToggle() {
+    if (this.selectedMemberId != null) {
+      this.displayEditMember = true;
+    }
   }
 
   constructor(private categoriesService: CategoriesService, private boothsService: BoothsService) {}

@@ -1,0 +1,11 @@
+<form [formGroup]="editMemberForm" (ngSubmit)="onSubmit(editMemberForm.value)">
+  <!-- TODO: Input validation -->
+  <label for="">Member Name: </label>
+  <input type="text" value="{{ member?.MemberName }}" formControlName="MemberName" />
+  <label for="">Member Phone Number: </label>
+  <input type="tel" value="{{ member?.MemberPhone }}" formControlName="MemberPhone" />
+  <label for="">Member Email: </label>
+  <input type="email" value="{{ member?.MemberEmail }}" formControlName="MemberEmail" />
+  <!-- TODO: If the form is dirty/any value changed, allow the submit. If only touched, do NOT -->
+  <input type="submit" value="Submit" />
+</form>

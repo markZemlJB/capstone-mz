@@ -8,6 +8,8 @@ import { ViewAllBoothsComponent } from './view-all-booths/view-all-booths.compon
 import { BoothSearchComponent } from './booth-search/booth-search.component';
 import { BoothAddComponent } from './booth-actions/booth-add/booth-add.component';
 import { MemberAddComponent } from './member-actions/member-add/member-add.component';
+import { BoothEditComponent } from './booth-actions/booth-edit/booth-edit.component';
+import { MemberEditComponent } from './member-actions/member-edit/member-edit.component';
 
 const fallBackRoute: Route = {
   path: '**',
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'search-booths', component: BoothSearchComponent },
   { path: 'add-booth', component: BoothAddComponent },
   { path: 'add-member', component: MemberAddComponent },
+  { path: 'edit-booth', component: BoothEditComponent },
+  { path: 'edit-member', component: MemberEditComponent },
   fallBackRoute,
 ];
 

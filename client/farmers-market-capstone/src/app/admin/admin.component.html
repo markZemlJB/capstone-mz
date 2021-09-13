@@ -8,12 +8,20 @@
   </section>
   <section>
     <h2>Add New Category/Booth/Members</h2>
+    <!-- TODO: Implement Category actions when backend is setup for Orgs -->
     <button>Add Product Category</button>
     <button routerLink="/add-booth" routerLinkActive="active">Add Booth</button>
     <button routerLink="/add-member" routerLinkActive="active">Add Member</button>
   </section>
   <section>
-    <h2>Edit or Delete Category/Booth/Members</h2>
+    <h2>Edit Category/Booth/Members</h2>
+    <!-- TODO: Implement Category actions when backend is setup for Orgs -->
+    <button>Edit Product Category</button>
+    <button routerLink="/edit-booth" routerLinkActive="active">Edit a Booth</button>
+    <button routerLink="/edit-member" routerLinkActive="active">Edit a Member</button>
+  </section>
+  <section>
+    <h2>View and Delete Category/Booth/Members</h2>
     <p>To perform an edit or delete, select the desired item in the dropdowns</p>
     <div>
       <label for="products"> Product Categories: </label>
@@ -24,8 +32,7 @@
           {{ category.OrganizationName }}
         </option>
       </select>
-      <!-- TODO: Implement these options when the backend has services to do these operations -->
-      <button>Edit</button>
+      <!-- TODO: Implement Category actions when backend is setup for Orgs -->
       <button>Delete</button>
     </div>
     <div>
@@ -36,7 +43,6 @@
           {{ booth.GroupName }}
         </option>
       </select>
-      <button (click)="editBooth()">Edit</button>
       <button (click)="deleteBooth()">Delete</button>
       <section *ngIf="selectedBoothId != null">
         <fm-booth-display [selectedBoothId]="selectedBoothId"></fm-booth-display>
@@ -50,14 +56,14 @@
           {{ member.MemberName }}
         </option>
       </select>
-      <button>Edit</button>
       <button (click)="deleteMember()">Delete</button>
+      <button (click)="displayEditMemberToggle()">Edit</button>
       <section *ngIf="selectedMemberId != null">
         <fm-member-display [selectedMemberId]="selectedMemberId" [selectedBoothId]="selectedBoothId"></fm-member-display>
       </section>
-    </div>
-    <div *ngIf="displayEditBooth">
-      <fm-booth-edit [selectedBoothId]="selectedBoothId"></fm-booth-edit>
+      <section *ngIf="selectedMemberId != null && displayEditMember">
+        <fm-member-edit [selectedMemberId]="selectedMemberId" [selectedBoothId]="selectedBoothId"></fm-member-edit>
+      </section>
     </div>
   </section>
 </main>

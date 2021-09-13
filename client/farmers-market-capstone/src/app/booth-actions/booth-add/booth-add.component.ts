@@ -51,8 +51,8 @@ export class BoothAddComponent implements OnInit {
     );
   }
 
-  categorySelection(catName): void {
-    this.addBoothForm?.controls.OrganizationName.setValue(catName);
+  categorySelection(categoryName: string): void {
+    this.addBoothForm?.controls.OrganizationName.setValue(categoryName);
   }
 
   ngOnInit(): void {

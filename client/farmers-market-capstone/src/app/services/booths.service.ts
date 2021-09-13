@@ -53,6 +53,10 @@ export class BoothsService {
     return this.http.post<Member>(`${this.boothApiUrl}/${boothId}/members`, requestBody, this.jsonContentTypeHeaders);
   }
 
+  editMember(boothId: number, requestBody): Observable<Booth[]> {
+    return this.http.put<Booth[]>(`${this.boothApiUrl}/${boothId}/members`, requestBody, this.jsonContentTypeHeaders);
+  }
+
   deleteBoothById(boothId: number): Observable<Booth> {
     const results: Observable<Booth> = this.http.delete<Booth>(`${this.boothApiUrl}/${boothId}`);
     return results;

@@ -10,6 +10,7 @@ import { BoothsService } from '../../services/booths.service';
 })
 export class BoothEditComponent implements OnInit {
   @Input() selectedBoothId: number;
+  @Input() selectedOrgName: string;
   booth = null;
   editBoothForm: FormGroup;
   //TODO Implement .setValue() for OrgName
@@ -24,7 +25,7 @@ export class BoothEditComponent implements OnInit {
         console.log(error);
       }
     );
-    console.log(JSON.stringify(this.booth));
+    //console.log(JSON.stringify(this.booth));
   }
 
   constructor(private boothsService: BoothsService, private fb: FormBuilder) {
@@ -40,7 +41,7 @@ export class BoothEditComponent implements OnInit {
   }
 
   onSubmit(formValues) {
-    // this.editBoothForm.value;
+    this.editBoothForm?.controls.OrganizationName.setValue(this.selectedOrgName);
     console.log(formValues);
     //this.boothsService.editBoothById(formValues);
   }
