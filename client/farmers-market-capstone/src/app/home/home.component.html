@@ -10,7 +10,7 @@
     <h2>Product Categories</h2>
     <p>Select a category that you would like the browse the products of:</p>
     <ul>
-      <!-- TODO: Set up routes for these buttons -->
+      <!-- TODO: Set up pages and routes for these buttons -->
       <li *ngFor="let category of categories">
         <button [routerLink]="['category-view', category]" routerLinkActive="active">{{ category.OrganizationName }}</button>
       </li>

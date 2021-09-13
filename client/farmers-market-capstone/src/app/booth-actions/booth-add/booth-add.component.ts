@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BoothsService } from 'src/app/services/booths.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CategoriesService } from '../../services/categories.service';
 
 @Component({
   selector: 'fm-booth-add',
@@ -10,24 +11,43 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class BoothAddComponent implements OnInit {
   addBoothForm: FormGroup;
   @Input() boothInfo = null;
+  categories;
 
-  constructor(private boothsService: BoothsService, private fb: FormBuilder) {
+  constructor(private boothsService: BoothsService, private fb: FormBuilder, private categoriesService: CategoriesService) {
     this.addBoothForm = fb.group({
-      GroupName: [null],
-      OrganizationName: this.boothInfo,
-      SponsorName: [null],
-      SponsorPhone: [null],
-      SponsorEmail: [null],
+      GroupName: [null, Validators.required],
+      OrganizationName: [null, Validators.required],
+      SponsorName: [null, Validators.required],
+      // TODO: Implement phone validator
+      SponsorPhone: [null, Validators.required],
+      SponsorEmail: [null, [Validators.required, Validators.email]],
       MaxGroupSize: 4,
     });
   }
 
   onSubmit(formValues) {
-    // this.editBoothForm.value;
-    console.log(formValues);
-    console.log(this.boothInfo);
-    //this.boothsService.editBoothById(formValues);
+    this.boothsService.editBoothById(formValues).subscribe(
+      (success) => success,
+      (error) => console.log(error)
+    );
   }
 
-  ngOnInit(): void {}
+  getCategories(): void {
+    this.categoriesService.getCategory().subscribe(
+      (category) => {
+        this.categories = category;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  categorySelection(catName): void {
+    this.addBoothForm?.controls.OrganizationName.setValue(catName);
+  }
+
+  ngOnInit(): void {
+    this.getCategories();
+  }
 }

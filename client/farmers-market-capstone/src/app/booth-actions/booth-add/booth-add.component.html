@@ -1,6 +1,7 @@
-<!-- TODO this belongs under members -->
+<main>
+  <!-- TODO this belongs under members -->
 
-<!-- <form>
+  <!-- <form>
   <label for="">Member Name: </label>
   <input type="text" />
   <label for="">Member Phone Number: </label>
@@ -8,15 +9,70 @@
   <label for="">Member Email: </label>
   <input type="email" />
 </form> -->
+  <h2>Add a new Booth</h2>
+  <p></p>
+  <form [formGroup]="addBoothForm" (ngSubmit)="onSubmit(addBoothForm.value)">
+    <!-- TODO Implement dropdown of categories here -->
+    <label for="products">* Product Category</label>
+    <!-- <input type="text" id="productCategory" placeholder="Product Category" formControlName="OrganizationName" required />
+    <div
+      *ngIf="
+        addBoothForm.controls['OrganizationName'].invalid &&
+        (addBoothForm.controls['OrganizationName'].dirty || addBoothForm.controls['OrganizationName'].touched)
+      "
+    >
+      Please enter a product category
+    </div> -->
 
-<form [formGroup]="addBoothForm" (ngSubmit)="onSubmit(addBoothForm.value)">
-  <label for="boothName">Booth Name: </label>
-  <input type="text" placeholder="Booth Name" formControlName="GroupName" />
-  <label for="">Booth Head Name: </label>
-  <input type="text" placeholder="Booth Head Name" formControlName="SponsorName" />
-  <label for="">Booth Head Phone Number: </label>
-  <input type="tel" placeholder="Booth Head Phone" formControlName="SponsorPhone" />
-  <label for="">Booth Head Email: </label>
-  <input type="email" placeholder="Booth Head Email" formControlName="SponsorEmail" />
-  <input type="submit" value="submit" />
-</form>
+    <select name="products" id="products" (change)="categorySelection($event.target.value)">
+      <option value="none" selected disabled hidden>Select a product category</option>
+      <option *ngFor="let category of categories" value="{{ category.OrganizationName }}">
+        {{ category.OrganizationName }}
+      </option>
+    </select>
+
+    <label for="boothName">* Booth Name: </label>
+    <input type="text" id="boothName" placeholder="Booth Name" formControlName="GroupName" required />
+    <div
+      *ngIf="
+        addBoothForm.controls['GroupName'].invalid &&
+        (addBoothForm.controls['GroupName'].dirty || addBoothForm.controls['GroupName'].touched)
+      "
+    >
+      Please enter a booth name
+    </div>
+
+    <label for="headName">* Booth Head Name: </label>
+    <input type="text" id="headName" placeholder="Booth Head Name" formControlName="SponsorName" required />
+    <div
+      *ngIf="
+        addBoothForm.controls['SponsorName'].invalid &&
+        (addBoothForm.controls['SponsorName'].dirty || addBoothForm.controls['SponsorName'].touched)
+      "
+    >
+      Please enter a name for the Head member
+    </div>
+
+    <label for="headPhone">* Booth Head Phone Number: </label>
+    <input type="tel" id="headPhone" placeholder="Booth Head Phone" formControlName="SponsorPhone" required />
+    <div
+      *ngIf="
+        addBoothForm.controls['SponsorPhone'].invalid &&
+        (addBoothForm.controls['SponsorPhone'].dirty || addBoothForm.controls['SponsorEmail'].touched)
+      "
+    >
+      Please enter a valid phone number
+    </div>
+    <label for="headEmail">* Booth Head Email: </label>
+    <input type="email" id="headEmail" placeholder="Booth Head Email" formControlName="SponsorEmail" required />
+    <div
+      *ngIf="
+        addBoothForm.controls['SponsorEmail'].invalid &&
+        (addBoothForm.controls['SponsorEmail'].dirty || addBoothForm.controls['SponsorEmail'].touched)
+      "
+    >
+      Please enter a valid email
+    </div>
+    <input type="submit" value="Submit" [disabled]="addBoothForm.invalid" />
+  </form>
+</main>

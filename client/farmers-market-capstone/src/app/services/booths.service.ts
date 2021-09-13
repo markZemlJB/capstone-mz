@@ -16,8 +16,8 @@ export class BoothsService {
 
   boothApiUrl = 'http://localhost:8082/api/groups';
 
-  xmlContentTypeHeaders = {
-    headers: new HttpHeaders().set('Content-Type', 'text/xml'),
+  jsonContentTypeHeaders = {
+    headers: new HttpHeaders().set('Content-Type', 'application/json'),
   };
 
   getBooths(): Observable<Booth[]> {
@@ -45,8 +45,8 @@ export class BoothsService {
     return results;
   }
 
-  editBoothById(body) {
-    const results = this.http.post(this.boothApiUrl, body, this.xmlContentTypeHeaders);
+  editBoothById(body): Observable<Booth> {
+    return this.http.post<Booth>(this.boothApiUrl, body, this.jsonContentTypeHeaders);
   }
 
   deleteBoothById(boothId: number): Observable<Booth> {

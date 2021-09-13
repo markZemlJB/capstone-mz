@@ -82,7 +82,7 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  getMembers(boothId) {
+  getMembers(boothId): void {
     this.boothPair = boothId;
     this.boothsService.getBoothMembersByBoothId(boothId[0]).subscribe(
       (members) => {
@@ -94,7 +94,7 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  categorySelection(category) {
+  categorySelection(category): void {
     this.selectedCatId = category;
 
     //Clears data in case the user changes their mind and chooses another dropdown option
@@ -107,7 +107,10 @@ export class AdminComponent implements OnInit {
     this.getBoothsByCategory(this.selectedCatId);
   }
 
-  boothSelection(boothId) {
+  boothSelection(boothId): void {
+    if (boothId === '--') {
+      return;
+    }
     this.selectedBoothId = boothId;
 
     this.selectedMemberId = null;
@@ -116,7 +119,7 @@ export class AdminComponent implements OnInit {
     this.getMembers(boothId);
   }
 
-  memberSelection(memberId) {
+  memberSelection(memberId): void {
     this.selectedMemberId = memberId;
     this.displayEditBooth = false;
   }

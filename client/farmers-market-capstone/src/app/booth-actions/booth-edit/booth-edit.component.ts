@@ -12,6 +12,7 @@ export class BoothEditComponent implements OnInit {
   @Input() selectedBoothId: number;
   booth = null;
   editBoothForm: FormGroup;
+  //TODO Implement .setValue() for OrgName
 
   getBooth(): void {
     if (this.selectedBoothId == null) {

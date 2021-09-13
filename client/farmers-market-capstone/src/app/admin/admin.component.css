@@ -5,3 +5,8 @@ section {
   justify-content: space-around;
   margin: 1em 1em;
 }
+
+main {
+  overflow: auto;
+  padding-bottom: 5em;
+}
