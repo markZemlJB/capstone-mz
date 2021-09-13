@@ -7,5 +7,5 @@
   <label for="">Member Email: </label>
   <input type="email" value="{{ member?.MemberEmail }}" formControlName="MemberEmail" />
   <!-- TODO: If the form is dirty/any value changed, allow the submit. If only touched, do NOT -->
-  <input type="submit" value="Submit" />
+  <input type="submit" value="Submit" [disabled]="editMemberForm.invalid || editMemberForm.pristine" />
 </form>
