@@ -1,0 +1,22 @@
+<!-- TODO this belongs under members -->
+
+<!-- <form>
+  <label for="">Member Name: </label>
+  <input type="text" />
+  <label for="">Member Phone Number: </label>
+  <input type="tel" />
+  <label for="">Member Email: </label>
+  <input type="email" />
+</form> -->
+
+<form [formGroup]="addBoothForm" (ngSubmit)="onSubmit(addBoothForm.value)">
+  <label for="boothName">Booth Name: </label>
+  <input type="text" placeholder="Booth Name" formControlName="GroupName" />
+  <label for="">Booth Head Name: </label>
+  <input type="text" placeholder="Booth Head Name" formControlName="SponsorName" />
+  <label for="">Booth Head Phone Number: </label>
+  <input type="tel" placeholder="Booth Head Phone" formControlName="SponsorPhone" />
+  <label for="">Booth Head Email: </label>
+  <input type="email" placeholder="Booth Head Email" formControlName="SponsorEmail" />
+  <input type="submit" value="submit" />
+</form>

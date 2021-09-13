@@ -2,7 +2,7 @@ import { Member } from './member';
 
 // group === booth
 export interface Booth {
-  GroupId: 3;
+  GroupId: number;
   GroupName: string;
   OrganizationName: string;
   SponsorName: string;

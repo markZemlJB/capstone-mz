@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CategoriesService } from '../services/categories.service';
 import { BoothsService } from '../services/booths.service';
-import { Category } from '../models/categories';
-import { Booth } from '../models/booths';
 
 @Component({
   selector: 'fm-admin',
@@ -14,11 +11,40 @@ import { Booth } from '../models/booths';
 export class AdminComponent implements OnInit {
   categories;
   booths;
-  errorMessage: string;
   members;
-  selectedCatId;
-  selectedBoothId;
-  selectedMemberId;
+  errorMessage: string;
+  selectedCatId: string;
+  selectedBoothId: number;
+  selectedMemberId: number;
+  displayEditBooth: boolean = false;
+  displayAddBooth: boolean = false;
+  boothPair;
+
+  editBooth() {
+    //Show the booth form and pass in the values into it
+    if (this.selectedBoothId != null) {
+      this.displayEditBooth = true;
+    }
+  }
+
+  // addBooth() {
+  //   //show the booth form
+  //   if (this.displayAddBooth != null) {
+  //     this.displayAddBooth = true;
+  //   }
+  // }
+
+  deleteBooth() {
+    if (this.selectedBoothId == null) {
+      return;
+    }
+    if (window.confirm('Are you sure you want to delete this?')) {
+      console.log(`DELETED ${this.selectedBoothId}`);
+
+      return;
+    }
+    console.log('CLICKED');
+  }
 
   getCategories(): void {
     this.categoriesService.getCategory().subscribe(
@@ -45,8 +71,9 @@ export class AdminComponent implements OnInit {
     );
   }
 
-  getMembers(boothId: number) {
-    this.boothsService.getBoothMembersByBoothId(boothId).subscribe(
+  getMembers(boothId) {
+    this.boothPair = boothId;
+    this.boothsService.getBoothMembersByBoothId(boothId[0]).subscribe(
       (members) => {
         this.members = members;
       },
@@ -64,12 +91,14 @@ export class AdminComponent implements OnInit {
     this.selectedMemberId = null;
     this.booths = null;
     this.members = null;
+    this.displayEditBooth = false;
 
     this.getBoothsByCategory(this.selectedCatId);
   }
 
   boothSelection(boothId) {
     this.selectedBoothId = boothId;
+    console.log(this.selectedBoothId);
 
     this.selectedMemberId = null;
     this.members = null;
@@ -79,6 +108,7 @@ export class AdminComponent implements OnInit {
 
   memberSelection(memberId) {
     this.selectedMemberId = memberId;
+    this.displayEditBooth = false;
   }
 
   constructor(private categoriesService: CategoriesService, private boothsService: BoothsService) {}

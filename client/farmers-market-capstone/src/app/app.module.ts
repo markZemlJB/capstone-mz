@@ -13,7 +13,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './admin/admin.component';
 import { ViewAllBoothsComponent } from './view-all-booths/view-all-booths.component';
 import { BoothListComponent } from './booth-list/booth-list.component';
-import { CrudFormsModule } from './crud-forms/crud-forms/crud-forms.module';
+import { BoothEditComponent } from './booth-actions/booth-edit/booth-edit.component';
+import { BoothAddComponent } from './booth-actions/booth-add/booth-add.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BoothDisplayComponent } from './booth-actions/booth-display/booth-display.component';
+import { MemberDisplayComponent } from './member-display/member-display.component';
 
 @NgModule({
   declarations: [
@@ -27,8 +31,12 @@ import { CrudFormsModule } from './crud-forms/crud-forms/crud-forms.module';
     AdminComponent,
     ViewAllBoothsComponent,
     BoothListComponent,
+    BoothEditComponent,
+    BoothAddComponent,
+    BoothDisplayComponent,
+    MemberDisplayComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, CrudFormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

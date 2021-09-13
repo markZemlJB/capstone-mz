@@ -16,8 +16,8 @@ export class BoothsService {
 
   boothApiUrl = 'http://localhost:8082/api/groups';
 
-  jsonContentTypeHeaders = {
-    headers: new HttpHeaders().set('Content-Type', 'application/json'),
+  xmlContentTypeHeaders = {
+    headers: new HttpHeaders().set('Content-Type', 'text/xml'),
   };
 
   getBooths(): Observable<Booth[]> {
@@ -30,8 +30,27 @@ export class BoothsService {
     return results;
   }
 
-  getBoothMembersByBoothId(boothId): Observable<Member[]> {
+  getBoothById(boothId: number): Observable<Booth> {
+    const results: Observable<Booth> = this.http.get<Booth>(`${this.boothApiUrl}/${boothId}`);
+    return results;
+  }
+
+  getBoothMembersByBoothId(boothId: number): Observable<Member[]> {
     const results: Observable<Member[]> = this.http.get<Member[]>(`${this.boothApiUrl}/${boothId}/members/`);
+    return results;
+  }
+
+  getBoothMemberById(boothId, memberId): Observable<Member> {
+    const results: Observable<Member> = this.http.get<Member>(`${this.boothApiUrl}/${boothId}/members/${memberId}`);
+    return results;
+  }
+
+  editBoothById(body) {
+    const results = this.http.post(this.boothApiUrl, body, this.xmlContentTypeHeaders);
+  }
+
+  deleteBoothById(boothId: number): Observable<Booth> {
+    const results: Observable<Booth> = this.http.delete<Booth>(`${this.boothApiUrl}/${boothId}`);
     return results;
   }
 }

@@ -7,47 +7,52 @@
     </p>
   </section>
   <section>
-    <form>
-      <div>
-        <label for="products"> Product Categories: </label>
-        <!-- <select name="products" id="products" (change)="getBoothsByCategory($event.target.value)"> -->
-        <select name="products" id="products" (change)="categorySelection($event.target.value)">
-          <option value="none" selected disabled hidden>Select a product category</option>
-          <option *ngFor="let category of categories" value="{{ category.OrganizationId }}">
-            {{ category.OrganizationName }}
-          </option>
-        </select>
-        <!-- TODO: Implement these options when the backend has services to do these operations -->
-        <button>Add</button>
-        <button>Edit</button>
-        <button>Delete</button>
-      </div>
-      <div>
-        <label for="booths">Booths: </label>
-        <select name="booths" id="booths" (change)="boothSelection($event.target.value)">
-          <!-- TODO: Fix the default dropdown option to display dashes when no option exists -->
-          <option selected>--</option>
-          <option *ngFor="let booth of booths" value="{{ booth.GroupId }}">
-            {{ booth.GroupName }}
-          </option>
-        </select>
-        <button>Add</button>
-        <button>Edit</button>
-        <button>Delete</button>
-      </div>
-      <div>
-        <label for="members">Members: </label>
-        <select name="members" id="members" (change)="memberSelection($event.target.value)">
-          <option selected>--</option>
-          <option *ngFor="let member of members" value="{{ member.MemberId }}">
-            {{ member.MemberName }}
-          </option>
-        </select>
-        <button>Add</button>
-        <button>Edit</button>
-        <button>Delete</button>
-      </div>
-    </form>
+    <div>
+      <label for="products"> Product Categories: </label>
+      <!-- <select name="products" id="products" (change)="getBoothsByCategory($event.target.value)"> -->
+      <select name="products" id="products" (change)="categorySelection($event.target.value)">
+        <option value="none" selected disabled hidden>Select a product category</option>
+        <option *ngFor="let category of categories" value="{{ category.OrganizationId }}">
+          {{ category.OrganizationName }}
+        </option>
+      </select>
+      <!-- TODO: Implement these options when the backend has services to do these operations -->
+      <button>Add</button>
+      <button>Edit</button>
+      <button>Delete</button>
+    </div>
+    <div>
+      <label for="booths">Booths: </label>
+      <select name="booths" id="booths" (change)="boothSelection($event.target.value)">
+        <option selected>--</option>
+        <option *ngFor="let booth of booths" value="{{ booth.GroupId }}">
+          {{ booth.GroupName }}
+        </option>
+      </select>
+      <button>Add</button>
+      <button (click)="editBooth()">Edit</button>
+      <button (click)="deleteBooth()">Delete</button>
+      <section *ngIf="selectedBoothId != null">
+        <fm-booth-display [selectedBoothId]="selectedBoothId"></fm-booth-display>
+      </section>
+    </div>
+    <div>
+      <label for="members">Members: </label>
+      <select name="members" id="members" (change)="memberSelection($event.target.value)">
+        <option selected>--</option>
+        <option *ngFor="let member of members" value="{{ member.MemberId }}">
+          {{ member.MemberName }}
+        </option>
+      </select>
+      <button>Add</button>
+      <button>Edit</button>
+      <button>Delete</button>
+      <section *ngIf="selectedMemberId != null">
+        <fm-member-display [selectedMemberId]="selectedMemberId" [selectedBoothId]="selectedBoothId"></fm-member-display>
+      </section>
+    </div>
   </section>
-  <fm-crud-forms [categoryId]="selectedCatId" [boothId]="selectedBoothId" [memberId]="selectedMemberId">test</fm-crud-forms>
+  <section *ngIf="displayEditBooth">
+    <fm-booth-edit [selectedBoothId]="selectedBoothId"></fm-booth-edit>
+  </section>
 </main>

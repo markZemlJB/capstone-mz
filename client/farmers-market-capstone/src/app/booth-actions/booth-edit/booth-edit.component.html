@@ -1,0 +1,11 @@
+<form [formGroup]="editBoothForm" (ngSubmit)="onSubmit(editBoothForm.value)">
+  <label for="boothName">Booth Name: </label>
+  <input type="text" value="{{ booth?.GroupName }}" formControlName="GroupName" />
+  <label for="">Booth Head Name: </label>
+  <input type="text" value="{{ booth?.SponsorName }}" formControlName="SponsorName" />
+  <label for="">Booth Head Phone Number: </label>
+  <input type="tel" value="{{ booth?.SponsorPhone }}" formControlName="SponsorPhone" />
+  <label for="">Booth Head Email: </label>
+  <input type="email" value="{{ booth?.SponsorEmail }}" formControlName="SponsorEmail" />
+  <input type="submit" value="submit" />
+</form>
