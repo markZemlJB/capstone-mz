@@ -40,7 +40,7 @@ export class BoothsService {
     return results;
   }
 
-  getBoothMemberById(boothId, memberId): Observable<Member> {
+  getBoothMemberById(boothId: number, memberId: number): Observable<Member> {
     const results: Observable<Member> = this.http.get<Member>(`${this.boothApiUrl}/${boothId}/members/${memberId}`);
     return results;
   }
@@ -51,6 +51,11 @@ export class BoothsService {
 
   deleteBoothById(boothId: number): Observable<Booth> {
     const results: Observable<Booth> = this.http.delete<Booth>(`${this.boothApiUrl}/${boothId}`);
+    return results;
+  }
+
+  deleteBoothMemberById(boothId: number, memberId: number): Observable<Member> {
+    const results: Observable<Member> = this.http.delete<Member>(`${this.boothApiUrl}/${boothId}/members/${memberId}`);
     return results;
   }
 }

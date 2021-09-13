@@ -46,7 +46,7 @@
       </select>
       <button>Add</button>
       <button>Edit</button>
-      <button>Delete</button>
+      <button (click)="deleteMember()">Delete</button>
       <section *ngIf="selectedMemberId != null">
         <fm-member-display [selectedMemberId]="selectedMemberId" [selectedBoothId]="selectedBoothId"></fm-member-display>
       </section>

@@ -36,13 +36,23 @@ export class AdminComponent implements OnInit {
   //   }
   // }
 
-  deleteBooth() {
+  deleteBooth(): void {
     if (this.selectedBoothId == null) {
       return;
     }
     if (window.confirm('Are you sure you want to delete this?')) {
-      console.log(`DELETED ${this.selectedBoothId}`);
       this.boothsService.deleteBoothById(this.selectedBoothId).subscribe((success) => console.log(success)), (error) => console.log(error);
+      window.location.reload();
+    }
+  }
+
+  deleteMember(): void {
+    if (this.selectedMemberId == null && this.selectedBoothId == null) {
+      return;
+    }
+    if (window.confirm('Are you sure you want to delete this?')) {
+      this.boothsService.deleteBoothMemberById(this.selectedBoothId, this.selectedMemberId).subscribe((success) => console.log(success)),
+        (error) => console.log(error);
       window.location.reload();
     }
   }
@@ -99,7 +109,6 @@ export class AdminComponent implements OnInit {
 
   boothSelection(boothId) {
     this.selectedBoothId = boothId;
-    console.log(this.selectedBoothId);
 
     this.selectedMemberId = null;
     this.members = null;
