@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { BoothsService } from '../services/booths.service';
+import { BoothsService } from '../../services/booths.service';
 
 @Component({
   selector: 'fm-member-display',

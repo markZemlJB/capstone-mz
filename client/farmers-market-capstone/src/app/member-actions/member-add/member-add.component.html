@@ -1,0 +1,52 @@
+<main>
+  <h2>Add a New Member</h2>
+  <p></p>
+  <form [formGroup]="addMemberForm" (ngSubmit)="onSubmit(addMemberForm.value)">
+    <!-- TODO Implement dropdown of categories here -->
+    <label for="booths">* Booths</label>
+    <select name="booths" id="booths" (change)="setSelectedBoothId($event.target.value)">
+      <option value="none" selected disabled hidden>Select a booth</option>
+      <option *ngFor="let booth of booths" value="{{ booth?.GroupId }}">
+        {{ booth?.GroupName }}
+      </option>
+    </select>
+
+    <label for="memberName">* Booth Member Name: </label>
+    <input type="text" id="memberName" placeholder="Member Name" formControlName="MemberName" required />
+    <div
+      *ngIf="
+        addMemberForm.controls['MemberName'].invalid &&
+        (addMemberForm.controls['MemberName'].dirty || addMemberForm.controls['MemberName'].touched)
+      "
+    >
+      Please enter a name for the member
+    </div>
+
+    <label for="memberPhone">* Booth Member Phone Number: </label>
+    <input type="tel" id="memberPhone" placeholder="Member Phone" formControlName="MemberPhone" required />
+    <div
+      *ngIf="
+        addMemberForm.controls['MemberPhone'].invalid &&
+        (addMemberForm.controls['MemberPhone'].dirty || addMemberForm.controls['MemberPhone'].touched)
+      "
+    >
+      Please enter a valid phone number
+    </div>
+    <label for="headEmail">* Booth Member Email: </label>
+    <input type="email" id="headEmail" placeholder="Member Email" formControlName="MemberEmail" required />
+    <div
+      *ngIf="
+        addMemberForm.controls['MemberEmail'].invalid &&
+        (addMemberForm.controls['MemberEmail'].dirty || addMemberForm.controls['MemberEmail'].touched)
+      "
+    >
+      Please enter a valid email
+    </div>
+    <input type="submit" value="Submit" [disabled]="addMemberForm.invalid" />
+  </form>
+  <div *ngIf="displayGroupError" class="max-members">
+    Booth is at max capacity!
+    <p>You can sign up here to be alerted if a spot opens up:</p>
+    <input type="email" name="alertList" id="alertList" placeholder="Email" />
+  </div>
+</main>

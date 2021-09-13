@@ -19,6 +19,10 @@ section {
   padding: 1em;
 }
 
+* {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 main {
   display: flex;
   align-items: center;

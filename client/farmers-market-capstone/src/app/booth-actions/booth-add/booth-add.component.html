@@ -1,29 +1,7 @@
 <main>
-  <!-- TODO this belongs under members -->
-
-  <!-- <form>
-  <label for="">Member Name: </label>
-  <input type="text" />
-  <label for="">Member Phone Number: </label>
-  <input type="tel" />
-  <label for="">Member Email: </label>
-  <input type="email" />
-</form> -->
-  <h2>Add a new Booth</h2>
-  <p></p>
+  <h2>Add a New Booth</h2>
   <form [formGroup]="addBoothForm" (ngSubmit)="onSubmit(addBoothForm.value)">
-    <!-- TODO Implement dropdown of categories here -->
     <label for="products">* Product Category</label>
-    <!-- <input type="text" id="productCategory" placeholder="Product Category" formControlName="OrganizationName" required />
-    <div
-      *ngIf="
-        addBoothForm.controls['OrganizationName'].invalid &&
-        (addBoothForm.controls['OrganizationName'].dirty || addBoothForm.controls['OrganizationName'].touched)
-      "
-    >
-      Please enter a product category
-    </div> -->
-
     <select name="products" id="products" (change)="categorySelection($event.target.value)">
       <option value="none" selected disabled hidden>Select a product category</option>
       <option *ngFor="let category of categories" value="{{ category.OrganizationName }}">

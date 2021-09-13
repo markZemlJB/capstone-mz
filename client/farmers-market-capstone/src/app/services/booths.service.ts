@@ -45,8 +45,12 @@ export class BoothsService {
     return results;
   }
 
-  editBoothById(body): Observable<Booth> {
-    return this.http.post<Booth>(this.boothApiUrl, body, this.jsonContentTypeHeaders);
+  addNewBooth(requestBody): Observable<Booth> {
+    return this.http.post<Booth>(this.boothApiUrl, requestBody, this.jsonContentTypeHeaders);
+  }
+
+  addNewMemberToBooth(boothId: number, requestBody): Observable<Member> {
+    return this.http.post<Member>(`${this.boothApiUrl}/${boothId}/members`, requestBody, this.jsonContentTypeHeaders);
   }
 
   deleteBoothById(boothId: number): Observable<Booth> {

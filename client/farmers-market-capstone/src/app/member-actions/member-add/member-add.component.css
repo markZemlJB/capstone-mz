@@ -1,0 +1,23 @@
+main {
+  border-radius: 1em;
+  background-color: #cecdc2;
+  justify-content: space-around;
+  margin: 1em 1em;
+  padding: 1em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+div {
+  color: rgb(163, 7, 7);
+  font-weight: bold;
+}
+
+.max-members {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}

@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BoothsService } from 'src/app/services/booths.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoriesService } from '../../services/categories.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'fm-booth-add',
@@ -10,10 +11,14 @@ import { CategoriesService } from '../../services/categories.service';
 })
 export class BoothAddComponent implements OnInit {
   addBoothForm: FormGroup;
-  @Input() boothInfo = null;
   categories;
 
-  constructor(private boothsService: BoothsService, private fb: FormBuilder, private categoriesService: CategoriesService) {
+  constructor(
+    private boothsService: BoothsService,
+    private router: Router,
+    private fb: FormBuilder,
+    private categoriesService: CategoriesService
+  ) {
     this.addBoothForm = fb.group({
       GroupName: [null, Validators.required],
       OrganizationName: [null, Validators.required],
@@ -26,8 +31,11 @@ export class BoothAddComponent implements OnInit {
   }
 
   onSubmit(formValues) {
-    this.boothsService.editBoothById(formValues).subscribe(
-      (success) => success,
+    this.boothsService.addNewBooth(formValues).subscribe(
+      (success) => {
+        alert('Booth added!');
+        this.router.navigate(['/admin']);
+      },
       (error) => console.log(error)
     );
   }

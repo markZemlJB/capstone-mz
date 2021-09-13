@@ -7,6 +7,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ViewAllBoothsComponent } from './view-all-booths/view-all-booths.component';
 import { BoothSearchComponent } from './booth-search/booth-search.component';
 import { BoothAddComponent } from './booth-actions/booth-add/booth-add.component';
+import { MemberAddComponent } from './member-actions/member-add/member-add.component';
 
 const fallBackRoute: Route = {
   path: '**',
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'view-all-booths', component: ViewAllBoothsComponent },
   { path: 'search-booths', component: BoothSearchComponent },
   { path: 'add-booth', component: BoothAddComponent },
+  { path: 'add-member', component: MemberAddComponent },
   fallBackRoute,
 ];
 
