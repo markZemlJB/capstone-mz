@@ -1,13 +1,19 @@
 ul {
   list-style: none;
+  padding-left: 0;
   font-size: large;
+}
+
+main {
   overflow: auto;
 }
 
 li {
   font-weight: bold;
+  padding-bottom: 1em;
 }
 
 li > * {
   font-weight: normal;
+  font-style: italic;
 }

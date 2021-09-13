@@ -1,31 +1,36 @@
 <main>
   <section>
-    <!-- TODO: Implement Authorization for the Admin Page -->
     <h1>Admin Page</h1>
     <p>
       Welcome to the Admin page. Here, you can create, update, and delete Product Categories, Booths, and Members. Use your powers wisely...
     </p>
   </section>
+
+  <!-- TODO: Implement Authorization for the Admin Page -->
+
+  <!-- TODO Might want to break out some functionality into smaller components -->
   <section>
-    <h2>Add New Category/Booth/Members</h2>
-    <!-- TODO: Implement Category actions when backend is setup for Orgs -->
-    <button>Add Product Category</button>
-    <button routerLink="/add-booth" routerLinkActive="active">Add Booth</button>
-    <button routerLink="/add-member" routerLinkActive="active">Add Member</button>
+    <span>
+      <h3>Add New Category/Booth/Members</h3>
+      <!-- TODO: Implement Category actions when backend is setup for Orgs -->
+      <button>Add Product Category</button>
+      <button routerLink="/add-booth" routerLinkActive="active">Add Booth</button>
+      <button routerLink="/add-member" routerLinkActive="active">Add Member</button>
+    </span>
+    <span>
+      <h3>Edit Category/Booth/Members</h3>
+      <!-- TODO: Implement Category actions when backend is setup for Orgs -->
+      <button>Edit Product Category</button>
+      <button routerLink="/edit-booth" routerLinkActive="active">Edit a Booth</button>
+      <button routerLink="/edit-member" routerLinkActive="active">Edit a Member</button>
+    </span>
   </section>
+
   <section>
-    <h2>Edit Category/Booth/Members</h2>
-    <!-- TODO: Implement Category actions when backend is setup for Orgs -->
-    <button>Edit Product Category</button>
-    <button routerLink="/edit-booth" routerLinkActive="active">Edit a Booth</button>
-    <button routerLink="/edit-member" routerLinkActive="active">Edit a Member</button>
-  </section>
-  <section>
-    <h2>View and Delete Category/Booth/Members</h2>
+    <h3>View and Delete Category/Booth/Members</h3>
     <p>To perform an edit or delete, select the desired item in the dropdowns</p>
     <div>
       <label for="products"> Product Categories: </label>
-      <!-- <select name="products" id="products" (change)="getBoothsByCategory($event.target.value)"> -->
       <select name="products" id="products" (change)="categorySelection($event.target.value)">
         <option value="none" selected disabled hidden>Select a product category</option>
         <option *ngFor="let category of categories" value="{{ category.OrganizationId }}">
