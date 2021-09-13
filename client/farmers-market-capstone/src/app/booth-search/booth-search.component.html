@@ -1,0 +1,24 @@
+<section>
+  <h2>Search for a Booth</h2>
+  <form (submit)="onSubmit()" name="search">
+    <input type="text" placeholder="Enter a booth name here" [(ngModel)]="searchTerm" name="search" />
+  </form>
+  <section>
+    <h3>Results</h3>
+    <ul *ngIf="matchingBooths?.length > 0">
+      <li *ngFor="let booth of matchingBooths">
+        <ul>
+          <li>Booth Name: {{ booth.GroupName }}</li>
+          <li>Product Category: {{ booth.OrganizationName }}</li>
+          <li>Booth Head Name: {{ booth.SponsorName }}</li>
+          <li>Booth Head Phone: {{ booth.SponsorPhone }}</li>
+          <li>Booth Head Email: {{ booth.SponsorEmail }}</li>
+          <ul>
+            <li *ngFor="let members of booth.Members">Member Name: {{ members.MemberName }}</li>
+          </ul>
+        </ul>
+      </li>
+    </ul>
+    <div *ngIf></div>
+  </section>
+</section>

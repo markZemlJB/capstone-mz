@@ -18,6 +18,7 @@ import { BoothAddComponent } from './booth-actions/booth-add/booth-add.component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BoothDisplayComponent } from './booth-actions/booth-display/booth-display.component';
 import { MemberDisplayComponent } from './member-display/member-display.component';
+import { BoothSearchComponent } from './booth-search/booth-search.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MemberDisplayComponent } from './member-display/member-display.componen
     BoothAddComponent,
     BoothDisplayComponent,
     MemberDisplayComponent,
+    BoothSearchComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule, ReactiveFormsModule],
   providers: [],
