@@ -24,3 +24,7 @@ section {
   list-style: decimal;
   padding-left: 2em;
 }
+
+input {
+  border-radius: 0.5em;
+}
